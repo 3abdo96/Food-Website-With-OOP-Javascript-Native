@@ -1,0 +1,64 @@
+body{
+   background-color: #0D0D0D;
+      color: #f9f6f6 !important;
+}
+
+
+.logo {
+   width: 50px;
+}
+
+.nav-tab {
+   background-color: #0D0D0D;
+}
+.side-nav-menu {
+   z-index: 99;
+   left: -267px;
+}
+
+.meal:hover .overlay{
+top: 0;
+}
+.overlay{
+   position: absolute;
+   top: 100%;
+   width: 100%;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   color: #000;
+   background-color: #f9f6f6ca;
+   padding: 0.5rem;
+   transition: 0.5s;
+   /* justify-content: center; */
+}
+
+.loading-screen{
+      z-index: 999;
+}
+.inner-loading-screen {
+   position: absolute;
+   z-index: 9;
+   background-color: #0D0D0D;
+   display: flex;
+}
+
+#categories .overlay{
+   display: block;
+   text-align: center;
+}
+
+.links li{
+   cursor: pointer;
+}
+i{
+   cursor: pointer;
+}
+.col-md-3{
+   cursor: pointer;
+}
+
+::placeholder {
+   color: #516072 !important;
+   opacity: 0.5;
+}
