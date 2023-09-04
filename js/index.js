@@ -8,7 +8,7 @@ $(".open-close-icon").on("click", function () {
   open++;
 
   if (open % 2 != 0) {
-    $(".side-nav-menu").animate({ left: "0px" }, 300);
+    $(".side-nav-menu").animate({ left: "0px" }, 700);
     $("#open-icon").removeClass("fa-align-justify");
     $("#open-icon").addClass("fa-x");
 
@@ -23,7 +23,7 @@ $(".open-close-icon").on("click", function () {
         );
     }
   } else {
-    $(".side-nav-menu").animate({ left: "-267px" }, 300);
+    $(".side-nav-menu").animate({ left: "-267px" }, 600);
     $("#open-icon").removeClass("fa-x");
     $("#open-icon").addClass("fa-align-justify");
 
@@ -31,7 +31,7 @@ $(".open-close-icon").on("click", function () {
       {
         top: 300,
       },
-      500
+      600
     );
   }
 });

@@ -47,8 +47,18 @@ export class Home {
   }
 
   search() {
+    $(".side-nav-menu").animate({ left: "-267px" }, 600);
+    $("#open-icon").removeClass("fa-x");
+    $("#open-icon").addClass("fa-align-justify");
     $("#searchContainer").removeClass("d-none");
     $("#meals").addClass("d-none");
+
+    $("#meals").addClass("d-none");
+    $("#categories").addClass("d-none");
+    $("#area").addClass("d-none");
+    $("#details").addClass("d-none");
+    $("#ingredients").addClass("d-none");
+    $("#contact-us").addClass("d-none");
   }
 
   async searchByName(name) {
@@ -59,6 +69,7 @@ export class Home {
     this.innerLoading.classList.add("d-none");
     this.ui.displayMeals(response.meals);
     $("#meals").removeClass("d-none");
+    this.showDetails();
   }
   async filterByLetter(letter) {
     this.innerLoading.classList.remove("d-none");
@@ -68,11 +79,14 @@ export class Home {
     this.innerLoading.classList.add("d-none");
     this.ui.displayMeals(response.meals);
     $("#meals").removeClass("d-none");
+    this.showDetails();
   }
 
   async getCategories() {
     this.innerLoading.classList.remove("d-none");
-    $(".side-nav-menu").animate({ left: "-267px" }, 300);
+    $(".side-nav-menu").animate({ left: "-267px" }, 600);
+    $("#open-icon").removeClass("fa-x");
+    $("#open-icon").addClass("fa-align-justify");
 
     let url = `https://www.themealdb.com/api/json/v1/1/categories.php`;
     let api = await fetch(url);
@@ -86,13 +100,16 @@ export class Home {
     $("#details").addClass("d-none");
     $("#ingredients").addClass("d-none");
     $("#contact-us").addClass("d-none");
+    $("#searchContainer").addClass("d-none");
 
     this.showCategoryMeals();
   }
 
   async getArea() {
     this.innerLoading.classList.remove("d-none");
-    $(".side-nav-menu").animate({ left: "-267px" }, 300);
+    $(".side-nav-menu").animate({ left: "-267px" }, 600);
+    $("#open-icon").removeClass("fa-x");
+    $("#open-icon").addClass("fa-align-justify");
 
     let url = `https://www.themealdb.com/api/json/v1/1/list.php?a=list`;
     let api = await fetch(url);
@@ -106,12 +123,15 @@ export class Home {
     $("#details").addClass("d-none");
     $("#ingredients").addClass("d-none");
     $("#contact-us").addClass("d-none");
+    $("#searchContainer").addClass("d-none");
 
     this.showAreaMeals();
   }
   async getIngredients() {
     this.innerLoading.classList.remove("d-none");
-    $(".side-nav-menu").animate({ left: "-267px" }, 300);
+    $(".side-nav-menu").animate({ left: "-267px" }, 600);
+    $("#open-icon").removeClass("fa-x");
+    $("#open-icon").addClass("fa-align-justify");
 
     let url = `https://www.themealdb.com/api/json/v1/1/list.php?i=list`;
     let api = await fetch(url);
@@ -125,11 +145,14 @@ export class Home {
     $("#details").addClass("d-none");
     $("#area").addClass("d-none");
     $("#contact-us").addClass("d-none");
+    $("#searchContainer").addClass("d-none");
 
     this.showIngredientsMeals();
   }
   show() {
-    $(".side-nav-menu").animate({ left: "-267px" }, 300);
+    $(".side-nav-menu").animate({ left: "-267px" }, 600);
+    $("#open-icon").removeClass("fa-x");
+    $("#open-icon").addClass("fa-align-justify");
 
     // this.ui.showContacts();
     $("#meals").addClass("d-none");
@@ -138,6 +161,7 @@ export class Home {
     $("#details").addClass("d-none");
     $("#area").addClass("d-none");
     $("#ingredients").addClass("d-none");
+    $("#searchContainer").addClass("d-none");
 
     new validation();
   }
@@ -151,6 +175,7 @@ export class Home {
         $("#contact-us").addClass("d-none");
         $("#area").addClass("d-none");
         $("#ingredients").addClass("d-none");
+        $("#searchContainer").addClass("d-none");
         new Details(meal.dataset.id);
       });
     });
@@ -176,6 +201,7 @@ export class Home {
     $("#meals").removeClass("d-none");
     $("#categories").addClass("d-none");
     this.ui.displayMeals(arr);
+    this.showDetails();
   }
   showAreaMeals() {
     document.querySelectorAll("[data-area]").forEach((ar) => {
@@ -197,6 +223,7 @@ export class Home {
     $("#meals").removeClass("d-none");
     $("#area").addClass("d-none");
     this.ui.displayMeals(arr);
+    this.showDetails();
   }
   showIngredientsMeals() {
     document.querySelectorAll("[data-ingredient]").forEach((ing) => {
@@ -213,10 +240,12 @@ export class Home {
     this.innerLoading.classList.add("d-none");
     let arr = [];
     for (let i = 0; i < 20; i++) {
-      arr.push(response.meals[i]);
+      arr.push(response.meals[i] ? response.meals[i] : "");
     }
     $("#meals").removeClass("d-none");
     $("#ingredients").addClass("d-none");
+    console.log(arr);
     this.ui.displayMeals(arr);
+    this.showDetails();
   }
 }

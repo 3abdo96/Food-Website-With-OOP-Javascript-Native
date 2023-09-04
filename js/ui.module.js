@@ -2,7 +2,6 @@ export class UI {
   constructor() {}
 
   displayMeals(data) {
-    console.log(data);
     let mealsConatiner = ``;
     for (let i = 0; i < data.length; i++) {
       mealsConatiner += ` <div class="col-md-3">
@@ -79,6 +78,7 @@ export class UI {
   }
 
   displayDetails(data) {
+    console.log(data);
     let ingredients = ``;
 
     for (let i = 1; i <= 20; i++) {
